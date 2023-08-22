@@ -369,8 +369,17 @@ export class PokemonController {
   };
 
   @Get()
-  getPokemonList(): any[] {
-    return this.pokemonData.result.map((pokemon) => ({
+  getPokemonList(): {
+    result: {
+      number: number;
+      name: string;
+      type: string;
+      image: string;
+      stats: Record<string, number>;
+      abilities: string[];
+    }[];
+  } {
+    const mappedPokemon = this.pokemonData.result.map((pokemon) => ({
       number: pokemon.number,
       name: pokemon.name,
       type: pokemon.type,
@@ -378,6 +387,8 @@ export class PokemonController {
       stats: pokemon.stats,
       abilities: pokemon.abilities,
     }));
+
+    return { result: mappedPokemon };
   }
 
   @Get(':number')
