@@ -377,6 +377,7 @@ export class PokemonController {
       image: string;
       stats: Record<string, number>;
       abilities: string[];
+      story: string;
     }[];
   } {
     const mappedPokemon = this.pokemonData.result.map((pokemon) => ({
@@ -386,6 +387,7 @@ export class PokemonController {
       image: pokemon.image,
       stats: pokemon.stats,
       abilities: pokemon.abilities,
+      story: pokemon.story,
     }));
 
     return { result: mappedPokemon };
